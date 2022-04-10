@@ -1,5 +1,6 @@
 fastapi==0.75.1
 keras==2.7.0
+tensorflow==2.7.0
 numpy==1.18.5
 pydicom==2.2.2
 uvicorn==0.17.6
