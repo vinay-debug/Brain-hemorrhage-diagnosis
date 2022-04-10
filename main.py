@@ -42,7 +42,6 @@ async def predict(
     image = read_file_as_image(await file.read())
     image1 = pydicom.dcmread(image, force=True)
     img =save_and_resize(image1)
-    img = np.resize(img,(1, 299, 299, 3))
     model=pickle.load(open('model3.pkl','rb'))
     
     #model.summary()
