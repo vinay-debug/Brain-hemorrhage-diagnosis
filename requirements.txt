@@ -1,6 +1,5 @@
 numpy
 opencv-python
-pickle
 pydicom
 keras
 fastapi
