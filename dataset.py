@@ -6,7 +6,6 @@ Created on Sat Mar 12 20:46:51 2022
 @author: vinay
 """
 import numpy as np
-import cv2
 
 #save and resixe image
 def get_pixels_hu(scan): 
@@ -56,6 +55,6 @@ def save_and_resize(dcm):
     image = apply_window_policy(image[0])
     image -= image.min((0,1))
     image = (255*image).astype(np.uint8)
-    image = cv2.resize(image, (299, 299)) #smaller
+    image = np.resize(image,(1, 299, 299, 3)) #smaller
         
     return image
