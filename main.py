@@ -13,7 +13,7 @@ from io import BytesIO
 import uvicorn ##ASGI
 from fastapi import FastAPI,File, UploadFile
 from dataset import save_and_resize
-from tensorflow.keras.models import load_model
+# from tensorflow.keras.models import load_model
 
 
 # 2. Create the app object
