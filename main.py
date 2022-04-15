@@ -45,7 +45,7 @@ async def predict(
     #model=pickle.load(open('model3.pkl','rb'))
     
     #model.summary()
-    model = load_model('/app/effnetb5_101k.h5')
+    model = load_model('./app/effnetb5_101k.h5')
     val_preds = model.predict(img)
     print('Original predicted value is', val_preds)
 
