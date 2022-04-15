@@ -8,12 +8,12 @@ Created on Sun Mar 13 11:32:26 2022
 # 1. Library imports
 import numpy as np
 import pydicom
-import pickle
+# import pickle
 from io import BytesIO
 import uvicorn ##ASGI
 from fastapi import FastAPI,File, UploadFile
 from dataset import save_and_resize
-# from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 
 
 # 2. Create the app object
@@ -42,10 +42,10 @@ async def predict(
     image = read_file_as_image(await file.read())
     image1 = pydicom.dcmread(image, force=True)
     img =save_and_resize(image1)
-    model=pickle.load(open('model3.pkl','rb'))
+    #model=pickle.load(open('model3.pkl','rb'))
     
     #model.summary()
-    #model = load_model('D:\project\effnetb5_101k.h5')
+    model = load_model('effnetb5_101k.h5')
     val_preds = model.predict(img)
     print('Original predicted value is', val_preds)
 
@@ -78,5 +78,5 @@ async def predict(
 # 5. Run the API with uvicorn
 #    Will run on http://127.0.0.1:8000
 if __name__ == '__main__':
-    uvicorn.run(app, host='127.0.0.1', port=8000)
+    uvicorn.run(app, host='0.0.0.0', port=8080)
 #uvicorn main:app --reload
