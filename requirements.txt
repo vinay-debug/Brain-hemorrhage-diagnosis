@@ -4,6 +4,8 @@ numpy==1.18.5
 pydicom==2.2.2
 uvicorn==0.17.6
 gunicorn==20.1.0
+opencv-python-headless==4.5.4.60
+os
 uvloop
 httptools
 python-multipart

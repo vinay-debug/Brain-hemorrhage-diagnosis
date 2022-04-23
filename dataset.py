@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -6,6 +7,8 @@ Created on Sat Mar 12 20:46:51 2022
 @author: vinay
 """
 import numpy as np
+import cv2
+import os
 
 #save and resixe image
 def get_pixels_hu(scan): 
@@ -49,12 +52,17 @@ def apply_window_policy(image):
 
     return image
 
-def save_and_resize(dcm):    
+def save_and_resize(dcm, filename):    
     
     image = get_pixels_hu(dcm)
+    directory = os.getcwd()
+
+    new_path =  directory+ '/static/'+ filename.replace('.dcm', '.png')
+    print(new_path)
     image = apply_window_policy(image[0])
     image -= image.min((0,1))
     image = (255*image).astype(np.uint8)
-    image = np.resize(image,(1, 299, 299, 3)) #smaller
+    image = cv2.resize(image, (299, 299)) #smaller
+    cv2.imwrite(new_path , image)
         
     return image
